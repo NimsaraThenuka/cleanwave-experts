@@ -1,0 +1,11 @@
+{
+  "title": "Clean Wave",
+  "description": "This modern cleaning services website offers Australian customers an attractive platform to book and manage cleaning services with user-friendly navigation and vibrant design.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
