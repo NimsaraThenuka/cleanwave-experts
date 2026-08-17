@@ -9,7 +9,13 @@ interface AboutPageProps {
 export default function AboutPage({ setCurrentPage }: AboutPageProps) {
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible')
+        } else {
+          e.target.classList.remove('visible')
+        }
+      }),
       { threshold: 0.1 }
     )
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el))
@@ -212,7 +218,17 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
           <div className="reveal rounded-2xl overflow-visible p-8 lg:p-10 text-white relative" style={{ background: 'linear-gradient(135deg, var(--primary), var(--navy))' }}>
             <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-10 bg-white translate-x-16 -translate-y-16 pointer-events-none" />
             <div className="lg:pr-56 text-center lg:text-left">
-              <p className="text-2xl sm:text-3xl font-black mb-3">🇦🇺 Proudly Australian</p>
+              <h3 className="text-2xl sm:text-3xl font-black mb-3 flex items-center justify-center lg:justify-start gap-2">
+                <img 
+                  src="https://flagcdn.com/w40/au.png" 
+                  srcSet="https://flagcdn.com/w80/au.png 2x" 
+                  width="32" 
+                  height="24"
+                  alt="Australia" 
+                  className="rounded-sm shadow-sm inline-block"
+                />
+                Proudly Australian
+              </h3>
               <p className="text-white/70 leading-relaxed text-sm sm:text-base">
                 Clean Wave is a 100% Australian-owned business, deeply committed to Melbourne&apos;s community and environment. Our team coordinates to deliver standard-setting Wave Excellence across all suburbs.
               </p>

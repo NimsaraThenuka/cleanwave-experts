@@ -31,20 +31,32 @@ export default function App() {
 
   // Reset scroll reveal on page change
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo(0, 0)
+    
+    let observer: IntersectionObserver | null = null
+
     // Give DOM a moment to paint, then re-observe
     const t = setTimeout(() => {
-      const observer = new IntersectionObserver(
-        entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
+      observer = new IntersectionObserver(
+        entries => entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible')
+          } else {
+            e.target.classList.remove('visible')
+          }
+        }),
         { threshold: 0.08 }
       )
       document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
         el.classList.remove('visible')
-        observer.observe(el)
+        observer?.observe(el)
       })
-      return () => observer.disconnect()
-    }, 80)
-    return () => clearTimeout(t)
+    }, 100)
+
+    return () => {
+      clearTimeout(t)
+      if (observer) observer.disconnect()
+    }
   }, [currentPage])
 
   const renderPage = () => {

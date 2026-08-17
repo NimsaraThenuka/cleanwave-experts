@@ -134,7 +134,19 @@ export default function Footer({ setCurrentPage }: FooterProps) {
                 },
                 {
                   icon: <MapPin className="w-4 h-4 text-blue-400" />,
-                  text: 'Melbourne, VIC, Australia 🇦🇺',
+                  text: (
+                    <span className="flex items-center gap-1.5">
+                      Melbourne, VIC, Australia
+                      <img 
+                        src="https://flagcdn.com/w20/au.png" 
+                        srcSet="https://flagcdn.com/w40/au.png 2x" 
+                        width="16" 
+                        height="12"
+                        alt="Australia" 
+                        className="inline-block rounded-sm shadow-sm"
+                      />
+                    </span>
+                  ),
                   href: '#',
                 },
               ].map((item, i) => (
@@ -142,7 +154,7 @@ export default function Footer({ setCurrentPage }: FooterProps) {
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(27,111,234,0.25)' }}>
                     {item.icon}
                   </div>
-                  <span className="mt-1">{item.text}</span>
+                  <span className="mt-1 flex-1">{item.text}</span>
                 </a>
               ))}
             </div>
@@ -175,8 +187,17 @@ export default function Footer({ setCurrentPage }: FooterProps) {
 
         {/* Bottom */}
         <div className="mt-8 md:mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <p className="text-gray-500 text-xs sm:text-sm">
-            © 2026 Clean Wave. All rights reserved. &nbsp;🇦🇺 Proudly serving Melbourne
+          <p className="text-gray-500 text-xs sm:text-sm flex items-center justify-center sm:justify-start gap-1.5">
+            © 2026 Clean Wave. All rights reserved. &nbsp;
+            <img 
+              src="https://flagcdn.com/w20/au.png" 
+              srcSet="https://flagcdn.com/w40/au.png 2x" 
+              width="16" 
+              height="12"
+              alt="Australia" 
+              className="inline-block rounded-sm shadow-sm"
+            />
+            Proudly serving Melbourne
           </p>
           <div className="flex flex-wrap justify-center sm:justify-start gap-x-6 gap-y-2 text-xs sm:text-sm text-gray-500">
             <a href="#" className="hover:text-white transition-colors whitespace-nowrap">Privacy Policy</a>

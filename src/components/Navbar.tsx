@@ -26,7 +26,7 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
   const go = (page: string) => {
     setCurrentPage(page)
     setMobileOpen(false)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo(0, 0)
   }
 
   return (
@@ -46,7 +46,15 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
           </div>
           <div className="flex items-center gap-1.5 text-xs text-white/80">
             <MapPin className="w-3.5 h-3.5 text-orange-400" />
-            Melbourne, VIC &nbsp;🇦🇺
+            Melbourne, VIC &nbsp;
+            <img 
+              src="https://flagcdn.com/w20/au.png" 
+              srcSet="https://flagcdn.com/w40/au.png 2x" 
+              width="16" 
+              height="12"
+              alt="Australia" 
+              className="inline-block rounded-sm shadow-sm align-middle"
+            />
           </div>
         </div>
       </div>

@@ -27,9 +27,15 @@ export default function BookingPage({ setCurrentPage, initialService }: BookingP
   }, [initialService])
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo(0, 0)
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible')
+        } else {
+          e.target.classList.remove('visible')
+        }
+      }),
       { threshold: 0.1 }
     )
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el))
