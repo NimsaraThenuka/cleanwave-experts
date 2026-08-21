@@ -575,7 +575,7 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
           <div className="text-center mb-16 reveal">
             <div className="section-badge mb-4">What We Offer</div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{ color: 'var(--navy)' }}>
-              Our <span className="text-gradient">Premium Services</span>
+              Our <span className="text-gradient">Professional Services</span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
               We provide a wide range of cleaning solutions tailored to meet the unique needs of Australian households and businesses.
@@ -1042,7 +1042,7 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
                   Serving Melbourne&apos;s <span className="text-gradient">South East</span>
                 </h2>
                 <p className="text-gray-500 leading-relaxed">
-                  We cover over 30+ suburbs across metropolitan Melbourne, bringing the premium Wave Standard right to your doorstep with unmatched local reliability.
+                  We cover over 30+ suburbs across metropolitan Melbourne, bringing the trusted Wave Standard right to your doorstep with unmatched local reliability.
                 </p>
               </div>
 

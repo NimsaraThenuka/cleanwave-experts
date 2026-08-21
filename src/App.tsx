@@ -63,6 +63,49 @@ export default function App() {
     }
   }, [currentPage])
 
+  // Dynamic SEO Page Titles and Descriptions
+  useEffect(() => {
+    let title = ''
+    let description = ''
+
+    switch (currentPage) {
+      case 'services':
+        title = 'Our Cleaning Services | End of Lease, Office & Steam Clean Melbourne | Clean Wave Experts'
+        description = 'Explore professional commercial and house cleaning services in Melbourne. From 100% bond-back end-of-lease cleans to deep steam cleaning and scheduled office maintenance.'
+        break
+      case 'about':
+        title = 'About Us | Certified & Insured Professional Cleaners Melbourne | Clean Wave Experts'
+        description = 'Meet Clean Wave Experts, Melbourne\'s trusted cleaning partners. Vetted, professional, and eco-friendly cleaners specializing in residential and large-scale commercial cleaning.'
+        break
+      case 'contact':
+        title = 'Contact Clean Wave Experts | Free Cleaning Quote Melbourne'
+        description = 'Get in touch with Melbourne\'s top cleaning service. Call +61 451 812 155, email info@cleanwaveexperts.com.au, or request a fast, free quote online.'
+        break
+      case 'booking':
+        title = 'Book a Cleaning Service Online Melbourne | Clean Wave Experts'
+        description = 'Book your home, commercial, or carpet cleaning online with Clean Wave Experts. Choose your service, date, and get vetted professional cleaners at your doorstep.'
+        break
+      case 'home':
+      default:
+        title = 'Clean Wave Experts | Professional House & Commercial Cleaning Melbourne'
+        description = 'Melbourne\'s top-rated cleaning company. Fully insured and Labour Hire Licensed. Specializing in home cleaning, office cleaning, end-of-lease, and steam cleaning.'
+        break
+    }
+
+    document.title = title
+    
+    // Update the meta description tag dynamically
+    const metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description)
+    } else {
+      const meta = document.createElement('meta')
+      meta.name = 'description'
+      meta.content = description
+      document.head.appendChild(meta)
+    }
+  }, [currentPage])
+
   const renderPage = () => {
     switch (currentPage) {
       case 'services': return <ServicesPage setCurrentPage={goToPage} />
