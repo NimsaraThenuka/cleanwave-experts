@@ -1116,7 +1116,7 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
             {/* Contact info */}
-            <div className="reveal-left relative pb-12 lg:pb-0 lg:pr-64 flex flex-col justify-between">
+            <div className="reveal-left relative pb-12 lg:pb-0 lg:pr-72 flex flex-col justify-between">
               <div>
                 <div className="section-badge section-badge-orange mb-5">Free Quote in 2 Hours</div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-5 leading-tight">
@@ -1155,7 +1155,7 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
               </div>
 
               {/* Large absolute positioned team illustration aligned to bottom */}
-              <div className="absolute bottom-0 -right-8 hidden lg:block reveal-left" style={{ transitionDelay: '200ms' }}>
+              <div className="absolute bottom-0 -right-24 hidden lg:block reveal-left" style={{ transitionDelay: '200ms' }}>
                 <img
                   src="https://res.cloudinary.com/dyp247eoh/image/upload/v1786862113/cleaning_team_angles_01_ubqqbv.png"
                   alt="3D Cleaning Team professionals standing together"

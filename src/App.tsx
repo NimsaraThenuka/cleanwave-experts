@@ -87,8 +87,8 @@ export default function App() {
         break
       case 'home':
       default:
-        title = 'Clean Wave Experts | Professional House & Commercial Cleaning Melbourne'
-        description = 'Melbourne\'s top-rated cleaning company. Fully insured and Labour Hire Licensed. Specializing in home cleaning, office cleaning, end-of-lease, and steam cleaning.'
+        title = 'Cleaning Services Melbourne | Professional Cleaners Australia | Clean Wave Experts'
+        description = 'Clean Wave Experts is the leading cleaning services provider in Melbourne, Australia. Fully insured and licensed. Best cleaning services for home, office, and bond returns.'
         break
     }
 
