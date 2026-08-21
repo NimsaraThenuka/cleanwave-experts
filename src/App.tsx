@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { ArrowUp } from 'lucide-react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
-import ServicesPage from './pages/ServicesPage'
-import AboutPage from './pages/AboutPage'
-import ContactPage from './pages/ContactPage'
-import BookingPage from './pages/BookingPage'
+
+const ServicesPage = lazy(() => import('./pages/ServicesPage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const BookingPage = lazy(() => import('./pages/BookingPage'))
 
 type Page = 'home' | 'services' | 'about' | 'contact' | 'booking'
 
@@ -126,7 +127,14 @@ export default function App() {
         key={currentPage}
         style={{ animation: 'fadeInPage 0.4s ease forwards' }}
       >
-        {renderPage()}
+        <Suspense fallback={
+          <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+            <div className="w-12 h-12 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-gray-400 text-sm font-semibold animate-pulse">Loading Wave Standard...</p>
+          </div>
+        }>
+          {renderPage()}
+        </Suspense>
       </main>
 
       <Footer setCurrentPage={goToPage} />

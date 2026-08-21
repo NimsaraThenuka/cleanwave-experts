@@ -620,6 +620,7 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
                     <img
                       src={svc.image}
                       alt={svc.title}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent" />
@@ -677,6 +678,7 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
           <img
             src="https://images.unsplash.com/photo-1771678040857-51d00a11be7a?w=1200&h=800&fit=crop&auto=format"
             alt="Modern commercial space"
+            loading="lazy"
             className="w-full h-full object-cover opacity-10"
           />
         </div>
@@ -1150,6 +1152,7 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
                 <img
                   src="https://res.cloudinary.com/dyp247eoh/image/upload/v1786862113/cleaning_team_angles_01_ubqqbv.png"
                   alt="3D Cleaning Team professionals"
+                  loading="lazy"
                   className="h-56 object-contain"
                 />
               </div>
@@ -1159,6 +1162,7 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
                 <img
                   src="https://res.cloudinary.com/dyp247eoh/image/upload/v1786862113/cleaning_team_angles_01_ubqqbv.png"
                   alt="3D Cleaning Team professionals standing together"
+                  loading="lazy"
                   className="h-80 object-contain hover:scale-105 transition-transform duration-500 origin-bottom"
                 />
               </div>
