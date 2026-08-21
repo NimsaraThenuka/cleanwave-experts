@@ -33,19 +33,19 @@ const SERVICES = [
   {
     image: 'https://res.cloudinary.com/dyp247eoh/image/upload/v1786885612/professional-cleaning-service-person-cleaning-office_23-2150520592_foqken.jpg',
     num: '01', title: 'Office Cleaning',
-    desc: 'Elevate your workspace with top-notch cleaning. A clean office is a productive office — we make yours shine.',
+    desc: 'Elevate your workspace with top-notch cleaning. A clean office is a productive office  we make yours shine.',
     price: '$200',
   },
   {
     image: 'https://res.cloudinary.com/dyp247eoh/image/upload/v1786885666/african-american-man-vacuuming-floors-living-room-cleaning-apartment-with-girlfriend-young-adult-using-vacuum-cleaner-woman-wiping-shelves-with-all-purpose-cleaner-tripod-shot_482257-64035_wey64p.jpg',
     num: '02', title: 'End of Lease Cleaning',
-    desc: 'Ensure your full bond return with our meticulous end-of-lease clean. We leave no corner untouched — guaranteed.',
+    desc: 'Ensure your full bond return with our meticulous end-of-lease clean. We leave no corner untouched  guaranteed.',
     price: '$400',
   },
   {
     image: 'https://res.cloudinary.com/dyp247eoh/image/upload/v1786885726/man-servant-getting-payed-by-owner_23-2149587635_xo8t8q.jpg',
     num: '03', title: 'Pre-Sale Property Cleaning',
-    desc: 'Make your property stand out in the market with a pristine presentation. First impressions matter — let us make yours count.',
+    desc: 'Make your property stand out in the market with a pristine presentation. First impressions matter  let us make yours count.',
     price: '$350',
   },
   {
@@ -115,7 +115,7 @@ const FAQS = [
   },
   {
     q: 'What is your 100% Satisfaction Guarantee?',
-    a: "If you're not completely satisfied with our service, let us know within 24 hours and we'll come back to re-clean any areas that didn't meet your expectations — at no extra cost, no questions asked.",
+    a: "If you're not completely satisfied with our service, let us know within 24 hours and we'll come back to re-clean any areas that didn't meet your expectations , at no extra cost, no questions asked.",
   },
   {
     q: 'How do I pay for the service?',
@@ -396,12 +396,11 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
         </div>
       </section>
 
-      {/* ══════════ MARQUEE TRUST BAR ══════════ */}
       <section className="py-4 overflow-hidden border-b border-gray-100" style={{ backgroundColor: 'var(--blue-pale-2)' }}>
-        <div className="flex animate-marquee whitespace-nowrap">
+        <div className="flex animate-marquee whitespace-nowrap w-max">
           {Array.from({ length: 2 }).map((_, i) => (
-            <div key={i} className="flex items-center gap-8 pr-8">
-              {['Fully Insured', 'Background Checked Staff', 'Eco-Friendly Products', 'Bond Back Guaranteed', 'Same-Day Booking Available', 'Serving Melbourne Since 2015', 'Labour Hire Licenced', '500+ 5-Star Reviews'].map(item => (
+            <div key={i} className="flex items-center gap-8 pr-8 flex-shrink-0">
+              {['Fully Insured', 'Background Checked Staff', 'Eco-Friendly Products', 'Bond Back Guaranteed', 'Same-Day Booking Available', 'Serving Melbourne Since 2018', 'Labour Hire Licenced', '500+ 5-Star Reviews'].map(item => (
                 <span key={item} className="flex items-center gap-2 text-sm font-semibold" style={{ color: 'var(--navy)' }}>
                   <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: 'var(--primary)' }} />
                   {item}
@@ -425,31 +424,37 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {[
+              {
+                icon: <Award className="w-8 h-8 text-blue-600" />,
+                title: 'Licensed & Fully Insured',
+                desc: 'We are Labour Hire Licensed and fully insured, adhering to strict industry standards for your absolute peace of mind.',
+                delay: '0ms',
+              },
               {
                 icon: <ShieldCheck className="w-8 h-8 text-blue-500" />,
                 title: 'Reliable & Professional',
                 desc: 'Every cleaner undergoes a rigorous background check and in-person interview before joining our team.',
-                delay: '0ms',
+                delay: '100ms',
               },
               {
                 icon: <Leaf className="w-8 h-8 text-emerald-500" />,
                 title: 'Eco-Friendly Products',
                 desc: 'We use non-toxic, sustainable cleaning products that are completely safe for kids and pets.',
-                delay: '100ms',
+                delay: '200ms',
               },
               {
                 icon: <Calendar className="w-8 h-8 text-orange-500" />,
                 title: 'Flexible Scheduling',
-                desc: 'Book, reschedule, or cancel your clean easily through our online portal — no hassle guaranteed.',
-                delay: '200ms',
+                desc: 'Book, reschedule, or cancel your clean easily through our online portal , no hassle guaranteed.',
+                delay: '300ms',
               },
               {
                 icon: <CheckCircle2 className="w-8 h-8 text-purple-500" />,
                 title: 'Satisfaction Guaranteed',
-                desc: "Not happy with the clean? We'll come back and fix it for free — no questions asked, ever.",
-                delay: '300ms',
+                desc: "Not happy with the clean? We'll come back and fix it for free , no questions asked, ever.",
+                delay: '400ms',
               },
             ].map(item => (
               <div
@@ -484,9 +489,9 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 { target: 500, suffix: '+', label: 'Happy Clients' },
-                { target: 10, suffix: '+', label: 'Years Experience' },
+                { target: 10, suffix: '+', label: 'Years of Industry Experience' },
                 { target: 100, suffix: '%', label: 'Satisfaction Rate' },
-                { target: 6, suffix: ' Days', label: 'A Week Service' },
+                { target: 7, suffix: ' Days', label: 'A Week Service' },
               ].map(stat => (
                 <div key={stat.label} className="text-center reveal">
                   <p className="text-4xl sm:text-5xl font-black mb-1.5" style={{ color: 'var(--primary)' }}>
@@ -508,14 +513,14 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
               {
                 icon: <Zap className="w-7 h-7 text-white" />,
                 title: 'Rapid Deployment',
-                desc: 'Our cleaners are ready to start immediately. We pride ourselves on the quickest turnaround in the industry — often same-day.',
+                desc: 'Our cleaners are ready to start immediately. We pride ourselves on the quickest turnaround in the industry  often same-day.',
                 gradient: 'linear-gradient(135deg, #1B6FEA 0%, #104ab0 100%)',
                 accentGlow: 'bg-blue-300/15'
               },
               {
                 icon: <Award className="w-7 h-7 text-white" />,
                 title: 'Superior Quality',
-                desc: "We don't just clean — we restore. Our multi-point quality check ensures every project meets our 'Wave Standard' of excellence.",
+                desc: "We don't just clean , we restore. Our multi-point quality check ensures every project meets our 'Wave Standard' of excellence.",
                 gradient: 'linear-gradient(135deg, #0D1B40 0%, #162554 100%)',
                 accentGlow: 'bg-indigo-300/15'
               },
@@ -1123,8 +1128,8 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
 
                 <div className="space-y-5 max-w-sm">
                   {[
-                    { icon: <Phone className="w-6 h-6 text-white" />, label: 'Call Us Anytime', val: '+61 0414 051 820', href: 'tel:+61414051820' },
-                    { icon: <Mail className="w-6 h-6 text-white" />, label: 'Email Support', val: 'clean.wave96@gmail.com', href: 'mailto:clean.wave96@gmail.com' },
+                    { icon: <Phone className="w-6 h-6 text-white" />, label: 'Call Us Anytime', val: '+61 451 812 155', href: 'tel:+61451812155' },
+                    { icon: <Mail className="w-6 h-6 text-white" />, label: 'Email Support', val: 'info@cleanwaveexperts.com.au', href: 'mailto:info@cleanwaveexperts.com.au' },
                     { icon: <MapPin className="w-6 h-6 text-white" />, label: 'Our Location', val: 'Melbourne, VIC, Australia', href: '#' },
                   ].map((c, idx) => (
                     <a key={idx} href={c.href} className="flex items-center gap-4 group">

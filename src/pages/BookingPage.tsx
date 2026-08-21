@@ -4,9 +4,10 @@ import { Calendar, Clock, User, Mail, Phone, MapPin, Sparkles, MessageSquare, Ar
 interface BookingPageProps {
   setCurrentPage: (page: string, service?: string) => void
   initialService?: string
+  previousPage?: string
 }
 
-export default function BookingPage({ setCurrentPage, initialService }: BookingPageProps) {
+export default function BookingPage({ setCurrentPage, initialService, previousPage }: BookingPageProps) {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
     name: '',
@@ -80,13 +81,13 @@ export default function BookingPage({ setCurrentPage, initialService }: BookingP
       `- Preferred Time: ${formData.time}\n` +
       `- Additional Details: ${formData.message || 'None'}\n\n` +
       `Please contact me to confirm. Thank you!`;
-    return `mailto:clean.wave96@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    return `mailto:info@cleanwaveexperts.com.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--blue-pale-2)' }}>
       {/* Hero Header */}
-      <section className="relative pt-36 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: 'var(--navy)' }}>
+      <section className="relative pt-24 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{ backgroundColor: 'var(--navy)' }}>
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&h=400&fit=crop&auto=format"
@@ -94,6 +95,18 @@ export default function BookingPage({ setCurrentPage, initialService }: BookingP
             className="w-full h-full object-cover opacity-15"
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(13,27,64,0.97) 0%, rgba(13,27,64,0.6) 100%)' }} />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto mb-4 sm:mb-6 text-left">
+          <button
+            onClick={() => setCurrentPage(previousPage || 'home')}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white/80 hover:text-white bg-white/10 hover:bg-white/20 border border-white/10 hover:border-white/20 transition-all duration-300 text-xs sm:text-sm font-bold cursor-pointer group backdrop-blur-sm shadow-sm"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
+            {previousPage === 'services' && 'Back to Services'}
+            {previousPage === 'about' && 'Back to About Us'}
+            {previousPage === 'contact' && 'Back to Contact'}
+            {(!previousPage || previousPage === 'home') && 'Back to Home'}
+          </button>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="section-badge section-badge-orange mb-5">Book Online</div>
@@ -154,7 +167,7 @@ export default function BookingPage({ setCurrentPage, initialService }: BookingP
                       className="w-full pl-11 pr-10 py-3.5 bg-slate-50 border border-slate-200 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/10 rounded-xl text-sm text-navy outline-none transition-all duration-200 appearance-none cursor-pointer"
                     >
                       <option value="" disabled>Select a service…</option>
-                      {['Residential Cleaning', 'Commercial / Office Cleaning', 'End of Lease Cleaning', 'Pre-Sale Property Cleaning', 'Spring / Deep Clean', 'Window Cleaning', 'Carpet & Steam Cleaning', 'Post-Construction Cleaning', 'Custom / Other'].map(s => (
+                      {['Residential Cleaning', 'Commercial / Office Cleaning', 'School Cleaning', 'End of Lease Cleaning', 'Pre-Sale Property Cleaning', 'Spring / Deep Clean', 'Window Cleaning', 'Carpet & Steam Cleaning', 'Post-Construction Cleaning', 'Custom / Other'].map(s => (
                         <option key={s} value={s}>{s}</option>
                       ))}
                     </select>

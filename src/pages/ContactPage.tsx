@@ -88,16 +88,16 @@ export default function ContactPage() {
               {
                 icon: <Mail className="w-7 h-7 text-orange-500" />,
                 title: 'Email Us',
-                val: 'clean.wave96@gmail.com',
+                val: 'info@cleanwaveexperts.com.au',
                 sub: 'We typically respond within 2 business hours.',
-                href: 'mailto:clean.wave96@gmail.com',
+                href: 'mailto:info@cleanwaveexperts.com.au',
                 color: 'var(--orange)',
               },
               {
                 icon: <MapPin className="w-7 h-7 text-emerald-500" />,
                 title: 'Visit Us',
                 val: 'Melbourne, VIC',
-                sub: 'Serving South East Melbourne and surrounding suburbs.',
+                sub: '',
                 href: '#',
                 color: '#059669',
               },
@@ -109,28 +109,63 @@ export default function ContactPage() {
                 href: '#',
                 color: '#7C3AED',
               },
-            ].map((c, i) => (
-              <a
-                key={c.title}
-                href={c.href}
-                className="reveal service-card block p-6 rounded-2xl bg-white group"
-                style={{
-                  border: '1px solid rgba(27,111,234,0.1)',
-                  boxShadow: '0 4px 24px rgba(27,111,234,0.06)',
-                  transitionDelay: `${i * 80}ms`,
-                }}
-              >
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
-                  style={{ background: `linear-gradient(135deg, ${c.color}18, ${c.color}30)` }}
+            ].map((c, i) => {
+              const cardContent = (
+                <>
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
+                    style={{ background: `linear-gradient(135deg, ${c.color}18, ${c.color}30)` }}
+                  >
+                    {c.icon}
+                  </div>
+                  <p className="text-xs uppercase tracking-widest font-bold mb-1" style={{ color: c.color }}>{c.title}</p>
+                  {c.title === 'Call Us' ? (
+                    <div className="space-y-1 mb-1">
+                      <a href="tel:+61451812155" className="block font-black text-sm text-navy hover:text-primary transition-colors">
+                        +61 451 812 155
+                      </a>
+                      <a href="tel:+61414051820" className="block font-black text-sm text-navy hover:text-primary transition-colors">
+                        +61 414 051 820
+                      </a>
+                    </div>
+                  ) : (
+                    <p className="font-black text-sm mb-1" style={{ color: 'var(--navy)' }}>{c.val}</p>
+                  )}
+                  {c.sub && <p className="text-xs text-gray-400 leading-relaxed">{c.sub}</p>}
+                </>
+              );
+
+              if (c.title === 'Call Us') {
+                return (
+                  <div
+                    key={c.title}
+                    className="reveal service-card block p-6 rounded-2xl bg-white group"
+                    style={{
+                      border: '1px solid rgba(27,111,234,0.1)',
+                      boxShadow: '0 4px 24px rgba(27,111,234,0.06)',
+                      transitionDelay: `${i * 80}ms`,
+                    }}
+                  >
+                    {cardContent}
+                  </div>
+                );
+              }
+
+              return (
+                <a
+                  key={c.title}
+                  href={c.href}
+                  className="reveal service-card block p-6 rounded-2xl bg-white group"
+                  style={{
+                    border: '1px solid rgba(27,111,234,0.1)',
+                    boxShadow: '0 4px 24px rgba(27,111,234,0.06)',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
                 >
-                  {c.icon}
-                </div>
-                <p className="text-xs uppercase tracking-widest font-bold mb-1" style={{ color: c.color }}>{c.title}</p>
-                <p className="font-black text-sm mb-1" style={{ color: 'var(--navy)' }}>{c.val}</p>
-                <p className="text-xs text-gray-400 leading-relaxed">{c.sub}</p>
-              </a>
-            ))}
+                  {cardContent}
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -275,10 +310,10 @@ export default function ContactPage() {
               <p className="text-sm text-gray-400 mb-5">Stay updated with cleaning tips, transformations, and exclusive Australian offers.</p>
               <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {[
-                  { name: 'Facebook', icon: <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>, color: '#1877F2' },
+                  { name: 'Facebook', icon: <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" /></svg>, color: '#1877F2' },
                   { name: 'Instagram', icon: <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>, color: '#E4405F' },
-                  { name: 'LinkedIn', icon: <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>, color: '#0A66C2' },
-                  { name: 'Twitter / X', icon: <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>, color: '#000' },
+                  { name: 'LinkedIn', icon: <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>, color: '#0A66C2' },
+                  { name: 'Twitter / X', icon: <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>, color: '#000' },
                 ].map(s => (
                   <a
                     key={s.name}
@@ -294,7 +329,7 @@ export default function ContactPage() {
                 ))}
               </div>
             </div>
- 
+
             {/* Live chat */}
             <div
               className="rounded-2xl p-7 text-white relative overflow-hidden"
@@ -311,12 +346,12 @@ export default function ContactPage() {
                 style={{ color: '#25D366' }}
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg>
                 Chat with Us
               </a>
             </div>
- 
+
             {/* Emergency */}
             <div className="rounded-2xl p-7" style={{ background: 'linear-gradient(135deg, var(--orange), var(--orange-dark))' }}>
               <h3 className="font-black text-white mb-2 flex items-center gap-1.5">
@@ -330,7 +365,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
- 
+
       {/* Service areas */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -338,9 +373,9 @@ export default function ContactPage() {
             <h2 className="text-2xl sm:text-3xl font-black mb-2" style={{ color: 'var(--navy)' }}>
               Our Service Areas
             </h2>
-            <p className="text-gray-400 text-sm">Covering 30+ suburbs across Melbourne&apos;s South East</p>
+            <p className="text-gray-400 text-sm">Covering 30+ suburbs across victoria</p>
           </div>
- 
+
           <div className="reveal grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
             {((isMobile && !showAllSuburbs) ? [
               'Port Melbourne', 'South Melbourne', 'Malvern', 'Camberwell', 'Glen Iris', 'Caulfield',
@@ -365,7 +400,7 @@ export default function ContactPage() {
               </div>
             ))}
           </div>
- 
+
           {isMobile && (
             <div className="flex justify-center mb-8">
               <button

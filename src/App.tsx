@@ -12,11 +12,15 @@ type Page = 'home' | 'services' | 'about' | 'contact' | 'booking'
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home')
+  const [previousPage, setPreviousPage] = useState<Page>('home')
   const [selectedService, setSelectedService] = useState('')
   const [showScrollTop, setShowScrollTop] = useState(false)
 
   const goToPage = (page: string, service?: string) => {
     setSelectedService(service || '')
+    if (page !== currentPage) {
+      setPreviousPage(currentPage)
+    }
     setCurrentPage(page as Page)
   }
 
@@ -64,7 +68,7 @@ export default function App() {
       case 'services': return <ServicesPage setCurrentPage={goToPage} />
       case 'about':    return <AboutPage    setCurrentPage={goToPage} />
       case 'contact':  return <ContactPage />
-      case 'booking':  return <BookingPage  setCurrentPage={goToPage} initialService={selectedService} />
+      case 'booking':  return <BookingPage  setCurrentPage={goToPage} initialService={selectedService} previousPage={previousPage} />
       default:         return <HomePage     setCurrentPage={goToPage} />
     }
   }

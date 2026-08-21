@@ -53,7 +53,7 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { num: '10+', label: 'Years of Experience', icon: <Trophy className="w-8 h-8 text-orange-400 mx-auto" /> },
+              { num: '10+', label: 'Years of Industry Experience', icon: <Trophy className="w-8 h-8 text-orange-400 mx-auto" /> },
               { num: '500+', label: 'Happy Clients', icon: <Smile className="w-8 h-8 text-blue-400 mx-auto" /> },
               { num: '30+', label: 'Melbourne Suburbs', icon: <MapPin className="w-8 h-8 text-emerald-400 mx-auto" /> },
               { num: '100%', label: 'Satisfaction Rate', icon: <Star className="w-8 h-8 text-yellow-400 mx-auto fill-current" /> },
@@ -83,13 +83,13 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
             </h2>
             <div className="space-y-6 text-gray-500 leading-relaxed">
               <p>
-                Clean Wave was born in 2015 from a simple vision: to bring genuine professionalism and reliability to Melbourne&apos;s cleaning industry. Our founders, tired of unreliable services, set out to build something different.
+                Clean Wave was born in 2018 from a simple vision: to bring genuine professionalism and reliability to Melbourne&apos;s cleaning industry. Our founders, tired of unreliable services, set out to build something different.
               </p>
               <p>
-                Today, we&apos;re proud to serve over 500 households and businesses across Melbourne&apos;s South East. Every clean is backed by our Wave Standard — a multi-point quality check that ensures consistency across every visit.
+                Today, we&apos;re proud to serve over 500 households and businesses across Melbourne&apos;s South East. Every clean is backed by our Wave Standard  a multi-point quality check that ensures consistency across every visit.
               </p>
               <p>
-                What sets us apart isn&apos;t just our spotless results — it&apos;s our people. Every team member is background-checked, fully trained, and committed to delivering a level of care that goes beyond a standard clean.
+                What sets us apart isn&apos;t just our spotless results  it&apos;s our people. Every team member is background-checked, fully trained, and committed to delivering a level of care that goes beyond a standard clean.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -135,20 +135,20 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
               },
               {
                 icon: <Trophy className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" />,
-                title: '10 Years of Expertise',
+                title: '10+ Years of Industry Experience',
                 desc: "With a solid foundation of 10+ years in the business, our skilled team brings a wealth of experience to elevate every cleaning project.",
                 color: 'var(--primary)',
               },
               {
                 icon: <Target className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500" />,
                 title: 'Tailored Solutions',
-                desc: "Every space has its own personality. Our services are customised to fit your unique needs — ensuring a perfect fit for your property.",
+                desc: "Every space has its own personality. Our services are customised to fit your unique needs  ensuring a perfect fit for your property.",
                 color: 'var(--orange)',
               },
               {
                 icon: <Award className="w-6 h-6 sm:w-8 sm:h-8 text-purple-500" />,
                 title: 'Guaranteed Satisfaction',
-                desc: "Your satisfaction isn't just a goal — it's our priority. We stand by our work with an unwavering commitment to delivering results that truly dazzle.",
+                desc: "Your satisfaction isn't just a goal , it's our priority. We stand by our work with an unwavering commitment to delivering results that truly dazzle.",
                 color: '#7C3AED',
               },
             ].map((item, i) => (
@@ -219,18 +219,18 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
             <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-10 bg-white translate-x-16 -translate-y-16 pointer-events-none" />
             <div className="lg:pr-56 text-center lg:text-left">
               <h3 className="text-2xl sm:text-3xl font-black mb-3 flex items-center justify-center lg:justify-start gap-2">
-                <img 
-                  src="https://flagcdn.com/w40/au.png" 
-                  srcSet="https://flagcdn.com/w80/au.png 2x" 
-                  width="32" 
+                <img
+                  src="https://flagcdn.com/w40/au.png"
+                  srcSet="https://flagcdn.com/w80/au.png 2x"
+                  width="32"
                   height="24"
-                  alt="Australia" 
+                  alt="Australia"
                   className="rounded-sm shadow-sm inline-block"
                 />
                 Proudly Australian
               </h3>
               <p className="text-white/70 leading-relaxed text-sm sm:text-base">
-                Clean Wave is a 100% Australian-owned business, deeply committed to Melbourne&apos;s community and environment. Our team coordinates to deliver standard-setting Wave Excellence across all suburbs.
+                Clean Wave is a 100% Australian owned business, deeply committed to Melbourne&apos;s community and environment. Our team coordinates to deliver standard setting Wave Excellence across all suburbs.
               </p>
             </div>
 
@@ -280,7 +280,7 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
             </p>
 
             <p className="text-gray-600 italic text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-              &ldquo;At Clean Wave, we believe that a clean environment is the foundation of a healthy, happy life. What started as a local family endeavor has grown into Melbourne&apos;s standard-setting cleaning partner, built on a simple promise: transparency, reliability, and unmatched attention to detail. We don&apos;t just clean spaces; we restore time and peace of mind for families and businesses across our community. Thank you for welcoming us into your spaces—we are honored to serve you.&rdquo;
+              &ldquo;At Clean Wave, we believe that a clean environment is the foundation of a healthy, happy life. What started as a local family endeavor has grown into Melbourne&apos;s standard-setting cleaning partner, built on a simple promise: transparency, reliability, and unmatched attention to detail. We don&apos;t just clean spaces; we restore time and peace of mind for families and businesses across our community. Thank you for welcoming us into your spaces,we are honored to serve you.&rdquo;
             </p>
 
             <div className="inline-flex flex-col items-center">

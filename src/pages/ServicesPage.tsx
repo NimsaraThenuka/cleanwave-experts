@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Home, Building2, KeyRound, Sparkles, Layout, Droplets, Paintbrush, CalendarCheck, UserCheck, ThumbsUp, Check, Phone } from 'lucide-react'
+import { Home, Building2, KeyRound, Sparkles, Layout, Droplets, Paintbrush, CalendarCheck, UserCheck, ThumbsUp, Check, Phone, School } from 'lucide-react'
 import StrokeText from '../components/StrokeText'
 
 interface ServicesPageProps {
@@ -10,8 +10,8 @@ const SERVICES = [
   {
     icon: <Home className="w-10 h-10 text-white" />,
     title: 'Residential Cleaning',
-    desc: 'Comprehensive cleaning for your home — covering everything from kitchens to bedrooms, ensuring a great living space every visit.',
-    features: ['Dusting & Polishing', 'Vacuuming & Mopping', 'Kitchen Sanitization', 'Bathroom Deep Clean'],
+    desc: 'Comprehensive cleaning for your home  covering everything from kitchens to bedrooms, ensuring a great living space every visit.',
+    features: ['Dusting & Polishing', 'Vacuuming & Mopping', 'Kitchen Sanitization', 'Bathroom Deep Clean', 'Window Cleaning'],
     price: '$150',
     period: 'Per Hour / Per Cleaner',
     image: 'https://res.cloudinary.com/dyp247eoh/image/upload/v1786884989/professional-cleaning-service-people-working-together-office_h4ft1z.webp',
@@ -21,7 +21,7 @@ const SERVICES = [
     icon: <Building2 className="w-10 h-10 text-white" />,
     title: 'Commercial Cleaning',
     desc: 'Tailored cleaning solutions for offices, retail spaces, and commercial facilities. Maintain a professional environment that impresses.',
-    features: ['Desk & Surface Cleaning', 'Common Area Sanitization', 'Waste Management', 'Floor Maintenance'],
+    features: ['Desk & Surface Cleaning', 'Common Area Sanitization', 'Waste Management', 'Floor Maintenance', 'Window Cleaning'],
     price: '$200',
     period: 'Per Hour / Per Cleaner',
     image: 'https://res.cloudinary.com/dyp247eoh/image/upload/v1786885194/professional-cleaning-service-people-working-together-office_23-2150520639_oxl3rl.avif',
@@ -61,12 +61,22 @@ const SERVICES = [
   {
     icon: <Paintbrush className="w-10 h-10 text-white" />,
     title: 'Post-Construction Cleaning',
-    desc: 'Heavy-duty cleaning for newly built or renovated properties. We remove dust, debris, and paint splatters — delivering a move-in-ready space.',
+    desc: 'Heavy-duty cleaning for newly built or renovated properties. We remove dust, debris, and paint splatters  delivering a move-in-ready space.',
     features: ['Fine Dust Removal', 'Debris Clearance', 'Surface Polishing', 'Safety Inspection'],
     price: '$350',
     period: 'Starting From',
     image: 'https://res.cloudinary.com/dyp247eoh/image/upload/v1786885495/tiler-working-renovation-apartment_23-2149278577_om4m2v.jpg',
     color: 'var(--orange)',
+  },
+  {
+    icon: <School className="w-10 h-10 text-white" />,
+    title: 'School Cleaning',
+    desc: 'Our cleaning service helps maintain a clean, safe, and hygienic environment for students, teachers, and staff. We provide thorough cleaning of classrooms, hallways, lunch areas, offices, and common spaces, with attention to the high-traffic areas that require regular care.',
+    features: ['Vacuuming & Mopping', 'Sanitization', 'Washroom cleaning', 'Waste Management', 'Floor Maintenance'],
+    price: 'Custom',
+    period: 'Contact for Quote',
+    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&auto=format&fit=crop',
+    color: '#4f46e5',
   },
 ]
 

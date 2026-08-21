@@ -124,13 +124,18 @@ export default function Footer({ setCurrentPage }: FooterProps) {
               {[
                 {
                   icon: <Phone className="w-4 h-4 text-blue-400" />,
-                  text: '+61 0414 051 820',
+                  text: '+61 451 812 155',
+                  href: 'tel:+61451812155',
+                },
+                {
+                  icon: <Phone className="w-4 h-4 text-blue-400" />,
+                  text: '+61 414 051 820',
                   href: 'tel:+61414051820',
                 },
                 {
                   icon: <Mail className="w-4 h-4 text-blue-400" />,
-                  text: 'clean.wave96@gmail.com',
-                  href: 'mailto:clean.wave96@gmail.com',
+                  text: 'info@cleanwaveexperts.com.au',
+                  href: 'mailto:info@cleanwaveexperts.com.au',
                 },
                 {
                   icon: <MapPin className="w-4 h-4 text-blue-400" />,

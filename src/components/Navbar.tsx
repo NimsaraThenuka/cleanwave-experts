@@ -34,14 +34,20 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
       {/* Top info bar */}
       <div style={{ backgroundColor: 'var(--navy)' }} className="py-2 px-4 hidden sm:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6 text-xs text-white/80">
-            <a href="tel:+61414051820" className="flex items-center gap-1.5 hover:text-white transition-colors">
+          <div className="flex items-center gap-5 text-xs text-white/80">
+            <a href="tel:+61451812155" className="flex items-center gap-1 hover:text-white transition-colors">
               <Phone className="w-3.5 h-3.5 text-blue-400" />
-              +61 0414 051 820
+              +61 451 812 155
             </a>
-            <a href="mailto:clean.wave96@gmail.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
+            <span className="text-white/20">|</span>
+            <a href="tel:+61414051820" className="flex items-center gap-1 hover:text-white transition-colors">
+              <Phone className="w-3.5 h-3.5 text-blue-400" />
+              +61 414 051 820
+            </a>
+            <span className="text-white/20">|</span>
+            <a href="mailto:info@cleanwaveexperts.com.au" className="flex items-center gap-1 hover:text-white transition-colors">
               <Mail className="w-3.5 h-3.5 text-blue-400" />
-              clean.wave96@gmail.com
+              info@cleanwaveexperts.com.au
             </a>
           </div>
           <div className="flex items-center gap-1.5 text-xs text-white/80">
@@ -201,9 +207,9 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
                 <Phone className="w-3.5 h-3.5 text-blue-400" />
                 <span>+61 0414 051 820</span>
               </a>
-              <a href="mailto:clean.wave96@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href="mailto:info@cleanwaveexperts.com.au" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Mail className="w-3.5 h-3.5 text-blue-400" />
-                <span>clean.wave96@gmail.com</span>
+                <span>info@cleanwaveexperts.com.au</span>
               </a>
             </div>
           </div>
