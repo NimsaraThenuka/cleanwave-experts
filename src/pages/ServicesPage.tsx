@@ -4,6 +4,7 @@ import StrokeText from '../components/StrokeText'
 
 interface ServicesPageProps {
   setCurrentPage: (page: string, service?: string) => void
+  scrollToAnchor?: string
 }
 
 const SERVICES = [
@@ -80,7 +81,21 @@ const SERVICES = [
   },
 ]
 
-export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
+export default function ServicesPage({ setCurrentPage, scrollToAnchor }: ServicesPageProps) {
+  useEffect(() => {
+    if (scrollToAnchor) {
+      const t = setTimeout(() => {
+        const el = document.getElementById(scrollToAnchor)
+        if (el) {
+          const navbarHeight = 80
+          const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight
+          window.scrollTo({ top, behavior: 'smooth' })
+        }
+      }, 150)
+      return () => clearTimeout(t)
+    }
+  }, [scrollToAnchor])
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => {
@@ -133,6 +148,7 @@ export default function ServicesPage({ setCurrentPage }: ServicesPageProps) {
           {SERVICES.map((svc, i) => (
             <div
               key={svc.title}
+              id={svc.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}
               className={`grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-12 items-center ${i % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}
               style={{ transitionDelay: `${i * 80}ms` }}
             >

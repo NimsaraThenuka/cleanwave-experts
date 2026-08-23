@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { ArrowUp } from 'lucide-react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -16,13 +16,20 @@ export default function App() {
   const [previousPage, setPreviousPage] = useState<Page>('home')
   const [selectedService, setSelectedService] = useState('')
   const [showScrollTop, setShowScrollTop] = useState(false)
-
-  const goToPage = (page: string, service?: string) => {
-    setSelectedService(service || '')
+  const goToPage = (page: string, anchor?: string) => {
+    setSelectedService(anchor || '')
     if (page !== currentPage) {
       setPreviousPage(currentPage)
+      setCurrentPage(page as Page)
+    } else if (anchor) {
+      // If already on the same page, scroll immediately
+      const el = document.getElementById(anchor)
+      if (el) {
+        const navbarHeight = 80
+        const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight
+        window.scrollTo({ top, behavior: 'smooth' })
+      }
     }
-    setCurrentPage(page as Page)
   }
 
   // Toggle Scroll to Top button visibility
@@ -36,8 +43,10 @@ export default function App() {
 
   // Reset scroll reveal on page change
   useEffect(() => {
-    window.scrollTo(0, 0)
-    
+    if (!selectedService) {
+      window.scrollTo(0, 0)
+    }
+
     let observer: IntersectionObserver | null = null
 
     // Give DOM a moment to paint, then re-observe
@@ -109,7 +118,7 @@ export default function App() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'services': return <ServicesPage setCurrentPage={goToPage} />
+      case 'services': return <ServicesPage setCurrentPage={goToPage} scrollToAnchor={selectedService} />
       case 'about':    return <AboutPage    setCurrentPage={goToPage} />
       case 'contact':  return <ContactPage />
       case 'booking':  return <BookingPage  setCurrentPage={goToPage} initialService={selectedService} previousPage={previousPage} />

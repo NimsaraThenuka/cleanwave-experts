@@ -86,7 +86,7 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
                 Clean Wave was born in 2018 from a simple vision: to bring genuine professionalism and reliability to Melbourne&apos;s cleaning industry. Our founders, tired of unreliable services, set out to build something different.
               </p>
               <p>
-                Today, we&apos;re proud to serve over 500 households and businesses across Melbourne&apos;s South East. Every clean is backed by our Wave Standard  a multi-point quality check that ensures consistency across every visit.
+                Today, we&apos;re proud to serve over 500 households and businesses across Melbourne. Every clean is backed by our Wave Standard  a multi-point quality check that ensures consistency across every visit.
               </p>
               <p>
                 What sets us apart isn&apos;t just our spotless results  it&apos;s our people. Every team member is background-checked, fully trained, and committed to delivering a level of care that goes beyond a standard clean.

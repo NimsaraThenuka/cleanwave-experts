@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin } from 'lucide-react'
 import StrokeText from './StrokeText'
 
 interface FooterProps {
-  setCurrentPage: (page: string) => void
+  setCurrentPage: (page: string, anchor?: string) => void
 }
 
 export default function Footer({ setCurrentPage }: FooterProps) {
@@ -16,14 +16,19 @@ export default function Footer({ setCurrentPage }: FooterProps) {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const go = (page: string) => {
-    setCurrentPage(page)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+  const go = (page: string, anchor?: string) => {
+    setCurrentPage(page, anchor)
+    if (!anchor) window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const services = [
-    'Office Cleaning', 'End of Lease', 'Residential Cleaning',
-    'Window Cleaning', 'Carpet Cleaning', 'Post-Construction',
+    { label: 'Residential Cleaning',      id: 'residential-cleaning' },
+    { label: 'Commercial Cleaning',       id: 'commercial-cleaning' },
+    { label: 'End of Lease Cleaning',     id: 'end-of-lease-cleaning' },
+    { label: 'Window Cleaning',           id: 'window-cleaning' },
+    { label: 'Carpet & Steam Cleaning',   id: 'carpet-steam-cleaning' },
+    { label: 'Post-Construction Cleaning',id: 'post-construction-cleaning' },
+    { label: 'School Cleaning',           id: 'school-cleaning' },
   ]
 
   const socialLinks = [
@@ -104,13 +109,13 @@ export default function Footer({ setCurrentPage }: FooterProps) {
             <h4 className="text-xs uppercase tracking-widest font-bold mb-5" style={{ color: '#60A5FA' }}>Our Services</h4>
             <ul className="space-y-3">
               {services.map(s => (
-                <li key={s}>
+                <li key={s.label}>
                   <button
-                    onClick={() => go('services')}
+                    onClick={() => go('services', s.id)}
                     className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-1 h-1 rounded-full bg-orange-400 group-hover:w-3 transition-all duration-300" />
-                    {s}
+                    {s.label}
                   </button>
                 </li>
               ))}

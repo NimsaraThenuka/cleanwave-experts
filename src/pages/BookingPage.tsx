@@ -81,7 +81,7 @@ export default function BookingPage({ setCurrentPage, initialService, previousPa
       `- Preferred Time: ${formData.time}\n` +
       `- Additional Details: ${formData.message || 'None'}\n\n` +
       `Please contact me to confirm. Thank you!`;
-    return `mailto:info@cleanwaveexperts.com.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    return `mailto:cleanwave1996@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   return (

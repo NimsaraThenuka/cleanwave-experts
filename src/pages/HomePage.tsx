@@ -129,14 +129,9 @@ const FAQS = [
 
 const TESTIMONIALS = [
   { name: 'Sarah Jenkins', location: 'Port Melbourne, VIC', stars: 5, text: "Absolutely the best cleaning service I've used. They were punctual, professional, and my house has never looked better. Highly recommend!" },
-  { name: 'Mark Thompson', location: 'South Melbourne, VIC', stars: 5, text: "Used them for an end-of-lease clean and got my full bond back without any issues. The team was incredibly thorough." },
-  { name: 'Elena Rodriguez', location: 'Malvern, VIC', stars: 5, text: "I love coming home to a clean house every Friday. It's the best investment I've made for my mental health!" },
-  { name: 'James Nguyen', location: 'Camberwell, VIC', stars: 5, text: "Booked a spring clean and they transformed my entire apartment. Every corner was spotless — I couldn't believe the difference." },
+  { name: 'Amelia Foster', location: 'Moorabbin, VIC', stars: 5, text: "I've tried three other cleaning companies before and none of them came close to Clean Wave. Consistent, reliable, and genuinely care about quality." },
   { name: 'Priya Sharma', location: 'Glen Iris, VIC', stars: 5, text: "The team arrived on time, worked quietly and efficiently, and left everything immaculate. Will definitely be a regular customer." },
   { name: 'Tom Wallace', location: 'Caulfield, VIC', stars: 5, text: "Used Clean Wave for our office fitout clean. Flawless result, very professional crew. Our clients noticed straight away!" },
-  { name: 'Chloe Bennett', location: 'Brighton, VIC', stars: 5, text: "Pre-sale clean before listing our home — the real estate agent said it was one of the best-presented properties she'd seen all year." },
-  { name: 'David Kim', location: 'Hampton, VIC', stars: 5, text: "Steam cleaning on our rugs and upholstery came out better than expected. Great value, no hidden costs, and a super friendly team." },
-  { name: 'Amelia Foster', location: 'Moorabbin, VIC', stars: 5, text: "I've tried three other cleaning companies before and none of them came close to Clean Wave. Consistent, reliable, and genuinely care about quality." },
 ]
 
 const testimonialGroups: typeof TESTIMONIALS[] = []
@@ -287,6 +282,19 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitted(true)
+
+    const subject = `Clean Wave Quote Request - ${formData.service}`
+    const body = 
+      `Hello Clean Wave,\n\n` +
+      `I would like to request a quote. Here are my details:\n\n` +
+      `- Name: ${formData.name}\n` +
+      `- Email: ${formData.email}\n` +
+      `- Phone: ${formData.phone || 'N/A'}\n` +
+      `- Service: ${formData.service}\n` +
+      `- Message: ${formData.message || 'None'}\n\n` +
+      `Thank you!`
+
+    window.location.href = `mailto:cleanwave1996@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   const cur = slides[slide]
@@ -897,16 +905,18 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
             <p className="text-gray-500">Real feedback from happy Australian customers.</p>
           </div>
 
-          <div className="w-full overflow-hidden mb-10">
+          {/* Desktop: 2-per-slide carousel */}
+          <div className="hidden md:block w-full overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translate3d(-${testimonialPage * 100}%, 0, 0)` }}
             >
-              {isMobile ? (
-                TESTIMONIALS.map((t) => (
-                  <div key={t.name} className="w-full flex-shrink-0 px-2 flex justify-center">
+              {[TESTIMONIALS.slice(0, 2), TESTIMONIALS.slice(2, 4)].map((group, pageIdx) => (
+                <div key={pageIdx} className="w-full flex-shrink-0 grid grid-cols-2 gap-6 px-1">
+                  {group.map((t) => (
                     <div
-                      className="service-card p-7 rounded-2xl bg-white flex flex-col justify-between w-full max-w-md"
+                      key={t.name}
+                      className="service-card p-7 rounded-2xl bg-white flex flex-col justify-between"
                       style={{
                         border: '1px solid rgba(27,111,234,0.1)',
                         boxShadow: '0 4px 24px rgba(27,111,234,0.07)',
@@ -924,107 +934,107 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))
-              ) : (
-                testimonialGroups.map((group, pageIdx) => (
-                  <div key={pageIdx} className="w-full flex-shrink-0 grid grid-cols-3 gap-6 px-1">
-                    {group.map((t) => (
-                      <div
-                        key={t.name}
-                        className="service-card p-7 rounded-2xl bg-white flex flex-col justify-between"
-                        style={{
-                          border: '1px solid rgba(27,111,234,0.1)',
-                          boxShadow: '0 4px 24px rgba(27,111,234,0.07)',
-                        }}
-                      >
-                        <div>
-                          <StarRating count={t.stars} />
-                          <p className="mt-4 mb-6 text-gray-600 text-sm leading-relaxed italic">&ldquo;{t.text}&rdquo;</p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <Avatar name={t.name} />
-                          <div>
-                            <p className="font-bold text-sm" style={{ color: 'var(--navy)' }}>{t.name}</p>
-                            <p className="text-xs text-gray-400">{t.location}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-
-          {/* Desktop Controls (md and up) */}
-          <div className="hidden md:flex justify-center items-center gap-6 mt-10">
-            <button
-              onClick={() => setTestimonialPage(p => (p - 1 + totalSlides) % totalSlides)}
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-primary hover:border-primary hover:bg-blue-50 transition-all cursor-pointer shadow-sm animate-fade-in"
-              aria-label="Previous page"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <div className="flex gap-2">
-              {Array.from({ length: totalSlides }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setTestimonialPage(i)}
-                  className="transition-all duration-300 rounded-full cursor-pointer"
-                  style={{
-                    width: i === testimonialPage ? '32px' : '10px',
-                    height: '10px',
-                    backgroundColor: i === testimonialPage ? 'var(--primary)' : '#D1D5DB',
-                  }}
-                />
+                  ))}
+                </div>
               ))}
             </div>
 
-            <button
-              onClick={() => setTestimonialPage(p => (p + 1) % totalSlides)}
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-primary hover:border-primary hover:bg-blue-50 transition-all cursor-pointer shadow-sm animate-fade-in"
-              aria-label="Next page"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Mobile Controls (below md) */}
-          <div className="flex md:hidden flex-col items-center gap-5 mt-10">
-            {/* Dots on top */}
-            <div className="flex gap-1.5 flex-wrap justify-center max-w-[280px]">
-              {Array.from({ length: totalSlides }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setTestimonialPage(i)}
-                  className="transition-all duration-300 rounded-full cursor-pointer"
-                  style={{
-                    width: i === testimonialPage ? '20px' : '7px',
-                    height: '7px',
-                    backgroundColor: i === testimonialPage ? 'var(--primary)' : '#D1D5DB',
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Arrows below dots, side-by-side */}
-            <div className="flex gap-4">
+            {/* Desktop Controls */}
+            <div className="flex justify-center items-center gap-6 mt-10">
               <button
-                onClick={() => setTestimonialPage(p => (p - 1 + totalSlides) % totalSlides)}
-                className="w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-primary hover:border-primary hover:bg-blue-50 transition-all cursor-pointer shadow-sm active:scale-95"
+                onClick={() => setTestimonialPage(p => (p - 1 + 2) % 2)}
+                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-primary hover:border-primary hover:bg-blue-50 transition-all cursor-pointer shadow-sm"
                 aria-label="Previous page"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
+              <div className="flex gap-2">
+                {[0, 1].map((i) => (
+                  <button
+                    key={i}
+                    onClick={() => setTestimonialPage(i)}
+                    className="transition-all duration-300 rounded-full cursor-pointer"
+                    style={{
+                      width: i === testimonialPage ? '32px' : '10px',
+                      height: '10px',
+                      backgroundColor: i === testimonialPage ? 'var(--primary)' : '#D1D5DB',
+                    }}
+                  />
+                ))}
+              </div>
               <button
-                onClick={() => setTestimonialPage(p => (p + 1) % totalSlides)}
-                className="w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-primary hover:border-primary hover:bg-blue-50 transition-all cursor-pointer shadow-sm active:scale-95"
+                onClick={() => setTestimonialPage(p => (p + 1) % 2)}
+                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-primary hover:border-primary hover:bg-blue-50 transition-all cursor-pointer shadow-sm"
                 aria-label="Next page"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
+            </div>
+          </div>
+
+          {/* Mobile: 1-by-1 carousel */}
+          <div className="md:hidden w-full overflow-hidden mb-10">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translate3d(-${testimonialPage * 100}%, 0, 0)` }}
+            >
+              {TESTIMONIALS.map((t) => (
+                <div key={t.name} className="w-full flex-shrink-0 px-2 flex justify-center">
+                  <div
+                    className="service-card p-7 rounded-2xl bg-white flex flex-col justify-between w-full max-w-md"
+                    style={{
+                      border: '1px solid rgba(27,111,234,0.1)',
+                      boxShadow: '0 4px 24px rgba(27,111,234,0.07)',
+                    }}
+                  >
+                    <div>
+                      <StarRating count={t.stars} />
+                      <p className="mt-4 mb-6 text-gray-600 text-sm leading-relaxed italic">&ldquo;{t.text}&rdquo;</p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Avatar name={t.name} />
+                      <div>
+                        <p className="font-bold text-sm" style={{ color: 'var(--navy)' }}>{t.name}</p>
+                        <p className="text-xs text-gray-400">{t.location}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Controls */}
+            <div className="flex flex-col items-center gap-5 mt-10">
+              <div className="flex gap-1.5 flex-wrap justify-center max-w-[280px]">
+                {TESTIMONIALS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setTestimonialPage(i)}
+                    className="transition-all duration-300 rounded-full cursor-pointer"
+                    style={{
+                      width: i === testimonialPage ? '20px' : '7px',
+                      height: '7px',
+                      backgroundColor: i === testimonialPage ? 'var(--primary)' : '#D1D5DB',
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setTestimonialPage(p => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
+                  className="w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-primary hover:border-primary hover:bg-blue-50 transition-all cursor-pointer shadow-sm active:scale-95"
+                  aria-label="Previous review"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => setTestimonialPage(p => (p + 1) % TESTIMONIALS.length)}
+                  className="w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-primary hover:border-primary hover:bg-blue-50 transition-all cursor-pointer shadow-sm active:scale-95"
+                  aria-label="Next review"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

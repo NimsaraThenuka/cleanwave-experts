@@ -36,6 +36,20 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitted(true)
+
+    const subject = `Clean Wave Quote Request - ${formData.service}`
+    const body = 
+      `Hello Clean Wave,\n\n` +
+      `I would like to request a quote. Here are my details:\n\n` +
+      `- Name: ${formData.name}\n` +
+      `- Email: ${formData.email}\n` +
+      `- Phone: ${formData.phone || 'N/A'}\n` +
+      `- Suburb: ${formData.suburb || 'N/A'}\n` +
+      `- Service: ${formData.service}\n` +
+      `- Message: ${formData.message || 'None'}\n\n` +
+      `Thank you!`
+
+    window.location.href = `mailto:cleanwave1996@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
